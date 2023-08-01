@@ -1,0 +1,16 @@
+{
+    "name": "user/premio-mega",
+    "description": "'estatisticas da mega'",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "odair",
+            "email": "odair.sp@hotmail.com"
+        }
+    ],
+    "require": {}
+}
