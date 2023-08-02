@@ -2,6 +2,9 @@
     "name": "user/premio-mega",
     "description": "'estatisticas da mega'",
     "autoload": {
+        "files": [
+            "app/helpers/functions.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         }

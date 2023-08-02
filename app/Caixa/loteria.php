@@ -21,15 +21,16 @@ class Loteria
 
         curl_setopt($curl, CURLOPT_URL, $endpoint);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
-        $resposta = curl_exec($curl);
+        $resposta = curl_exec($curl) ? json_decode(curl_exec($curl),true):[];
+        // $resposta = curl_error($curl);
+        // $resposta = file_get_contents('https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx');
 
         curl_close($curl);
 
-        echo "<pre>";
-        print_r($resposta);
-        // var_dump(file_get_contents($endpoint));
-        echo "<pre>";
+        return $resposta;
     }
 }
