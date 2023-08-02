@@ -16,10 +16,10 @@ $resultado = Loteria::consultarResultado("megasena");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<h2>INDEX</h2>
+<h2>Resultados</h2>
 
 
-<pre><?= var_dump(lerArquivo('../app/files/megasena.csv'))?></pre>
+<pre><?= var_dump(todosResultados())?></pre>
 
 
 <body>

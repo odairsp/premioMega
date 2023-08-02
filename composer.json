@@ -3,6 +3,7 @@
     "description": "'estatisticas da mega'",
     "autoload": {
         "files": [
+            "app/helpers/constants.php",
             "app/helpers/functions.php"
         ],
         "psr-4": {

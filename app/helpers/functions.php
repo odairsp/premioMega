@@ -29,16 +29,26 @@ function escreverFinal(string $texto, $arquivo)
 
 function todosResultados()
 {
+    $path = '../'.RESULTADOS_PATH;
 
-    $ultimo = Loteria::consultarResultado('megasena');
-
-    $resultados = [];
-
-    for ($i = 1; $i <= 10; $i++) {
-        $texto = Loteria::consultarResultado("megasena/{$i}");
-        array_push($resultados, $texto['dezenasSorteadasOrdemSorteio']);
+    $ultimo =  Loteria::consultarResultado('megasena');
+    $resultados = lerArquivo($path);
+    // var_dump($ultimo);
+    if($ultimo['numero'] != count($resultados)){
+        
+        $numerosSorteados = $ultimo['dezenasSorteadasOrdemSorteio'];
+        foreach ($numerosSorteados as $key => $value) {
+            $numerosSorteados[$key] = (int) $value;
+        }
+        sort($numerosSorteados);
+        
+        $texto =implode(';', array_merge([$ultimo['numero']],$numerosSorteados));
+        
+        escreverFinal($texto,'../'.RESULTADOS_PATH);
+        
+    }else{
+        return ;
     }
 
 
-    return $resultados;
 }
