@@ -13,7 +13,7 @@ function lerArquivo($arquivo)
     $conteudo = fopen($arquivo, 'r');
     $texto = [];
     while ($linha = fgetcsv($conteudo, 5000, ';')) {
-        $texto['n-'.$linha[0]] = (object) array_splice($linha,1);
+        array_push($texto ,$linha);
     }
 
     fclose($conteudo);
@@ -23,7 +23,7 @@ function lerArquivo($arquivo)
 function escreverFinal(string $texto, $arquivo)
 {
     $resultados = fopen($arquivo, 'a');
-    fwrite($resultados, $texto);
+    fwrite($resultados, $texto."\n");
     fclose($resultados);
 }
 
@@ -47,8 +47,9 @@ function todosResultados()
         escreverFinal($texto,'../'.RESULTADOS_PATH);
         
     }else{
-        return ;
+        $resultados = array_filter(lerArquivo($path));
+        
     }
-
+    return $resultados;
 
 }

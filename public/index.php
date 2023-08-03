@@ -19,7 +19,13 @@ $resultado = Loteria::consultarResultado("megasena");
 <h2>Resultados</h2>
 
 
-<pre><?= var_dump(todosResultados())?></pre>
+<?php
+$resultados = todosResultados();
+foreach ($resultados as $key => $value):?>
+
+<p>Concurso - </p>
+
+<?php endforeach?>
 
 
 <body>
