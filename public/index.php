@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 //DEPENDENCIAS DO PROJETO
 use \App\Caixa\Loteria;
+
 $resultado = Loteria::consultarResultado("megasena");
 
 ?>
@@ -20,12 +21,22 @@ $resultado = Loteria::consultarResultado("megasena");
 
 
 <?php
-$resultados = todosResultados();
-foreach ($resultados as $key => $value):?>
+$resultados = (array) todosResultados();
+krsort($resultados);
 
-<p>Concurso - </p>
+foreach ($resultados as $value) : ?>
 
-<?php endforeach?>
+    Concurso - <?= $value[0] ?> =>
+
+    <?php foreach (array_slice($value, 1) as $num) : ?>
+
+        <?= $num ?>
+
+    <?php endforeach ?>
+    <br>
+
+
+<?php endforeach ?>
 
 
 <body>
