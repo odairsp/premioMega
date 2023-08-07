@@ -15,32 +15,44 @@ $resultado = Loteria::consultarResultado("megasena");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Mega-Sena</title>
 </head>
 <h2>Resultados</h2>
 
+<div>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Concurso</th>
+            <?php
+            $resultados = (array) todosResultados();
+            krsort($resultados);
+            ?>
+            <?php for ($i = 1; $i <= 6; $i++) : ?>
+                <th><?= $i ?></th>
+            <?php endfor ?>
 
-<?php
-$resultados = (array) todosResultados();
-krsort($resultados);
+        </tr>
+        <tbody>
 
-foreach ($resultados as $value) : ?>
+            <?php foreach ($resultados as $value) : ?>
+                <tr>
+                    <td><?= $value[0] ?></td>
+                    <?php foreach (array_slice($value, 1) as $num) : ?>
+                        <td><?= $num ?></td>
+                    <?php endforeach ?>
 
-    Concurso - <?= $value[0] ?> =>
+                </tr>
+            <?php endforeach ?>
 
-    <?php foreach (array_slice($value, 1) as $num) : ?>
+        </tbody>
+    </table>
 
-        <?= $num ?>
-
-    <?php endforeach ?>
-    <br>
-
-
-<?php endforeach ?>
-
+</div>
 
 <body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
