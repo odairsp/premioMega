@@ -30,21 +30,25 @@ function escreverFinal(string $texto, $arquivo)
 function todosResultados()
 {
     $path = '../' . RESULTADOS_PATH;
-
-    $ultimo =  Loteria::consultarResultado('megasena');
+    $ultimo =  Loteria::consultarResultado('megasena')['numero'];
     $resultados = lerArquivo($path);
-    // var_dump($ultimo);
-    if ($ultimo['numero'] != count($resultados)) {
+    $num = (int) end($resultados)[0];
 
-        $numerosSorteados = $ultimo['dezenasSorteadasOrdemSorteio'];
-        foreach ($numerosSorteados as $key => $value) {
-            $numerosSorteados[$key] = (int) $value;
+    if (($ultimo > $num)) {
+
+        while ($ultimo > $num) {
+            $num += 1;
+            $ultimoRes =  Loteria::consultarResultado('megasena/' . $num);
+            $numerosSorteados = $ultimoRes['dezenasSorteadasOrdemSorteio'];
+            foreach ($numerosSorteados as $key => $value) {
+                $numerosSorteados[$key] = (int) $value;
+            }
+            sort($numerosSorteados);
+
+            $texto = implode(';', array_merge([$ultimoRes['numero']], $numerosSorteados));
+
+            escreverFinal($texto, '../' . RESULTADOS_PATH);
         }
-        sort($numerosSorteados);
-
-        $texto = implode(';', array_merge([$ultimo['numero']], $numerosSorteados));
-
-        escreverFinal($texto, '../' . RESULTADOS_PATH);
     } else {
 
         $resultados = array_filter(lerArquivo($path));
