@@ -1,0 +1,18 @@
+#form-numbers{
+    margin: 3rem;
+}
+
+.number {
+  margin: 0.5rem;
+  padding: 0;
+  max-width: 2rem;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.number:hover{
+    background-color: green;
+    color: white;
+}
+

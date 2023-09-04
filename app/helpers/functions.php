@@ -3,11 +3,6 @@
 use App\Caixa\Loteria;
 
 
-
-$arquivo = '../files/resultados.txt';
-$resultados = '../files/Mega-Sena.xlsx';
-
-
 function lerArquivo($arquivo)
 {
     $conteudo = fopen($arquivo, 'r');
