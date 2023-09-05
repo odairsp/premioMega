@@ -21,7 +21,6 @@ $resultado = Loteria::consultarResultado("megasena");
 </head>
 
 <body>
-
     <header>
         <div class="container">
             <div class="container mb-5 mt-3">
@@ -29,16 +28,11 @@ $resultado = Loteria::consultarResultado("megasena");
                 <input type="text" name="search" id="search">
             </div>
             <div class="container">
-
-
-
                 <?php for ($num = 1; $num <= 60; $num++) : ?>
-                    <button id=<?= "num" . $num ?> class="number" type="submit" onclick="clicar(this.id)"><?= $num ?></button>
+                    <input id=<?= "num" . $num ?> class="number" type="submit" value=<?= $num ?> onclick="clicar(this.id)">
                 <?php endfor ?>
             </div>
-
         </div>
-
     </header>
 
     <main>
@@ -50,31 +44,25 @@ $resultado = Loteria::consultarResultado("megasena");
                         <thead class="table text-center">
                             <tr>
                                 <th>Concurso</th>
-                                <?php
-                                $resultados = (array) todosResultados();
-                                krsort($resultados);
-                                ?>
-                                <?php for ($i = 1; $i <= 6; $i++) : ?>
-                                    <th>num -> <?= $i ?></th>
-                                <?php endfor ?>
 
+                                <th colspan="6">Numeros Sorteados</th>
                             </tr>
                         </thead>
                         <tbody class="table text-center">
 
-                            <?php foreach ($resultados as $value) : ?>
-                                <tr>
+                            <?php
+                            $resultados = (array) todosResultados();
+                            krsort($resultados);
+                            foreach ($resultados as $value) : ?>
+                                <tr id=<?= "linha" . $value[0] ?>>
                                     <td><?= $value[0] ?></td>
                                     <?php foreach (array_slice($value, 1) as $num) : ?>
                                         <td><?= $num ?></td>
                                     <?php endforeach ?>
-
                                 </tr>
                             <?php endforeach ?>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
@@ -83,24 +71,7 @@ $resultado = Loteria::consultarResultado("megasena");
     <footer></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-    <script>
-        let status = false
-        function clicar(e) {
-            status = !status
-            let button = document.getElementById(e)
-            if(status){
-              
-            button.style.backgroundColor = "green"
-            button.style.color = "#fff" 
-            }else{
-            button.style.backgroundColor = "gray"
-            button.style.color = "#000" 
-            }
-            
-        }
-    </script>
+    <script src="./js/scripts.js"></script>
 
 </body>
-
 </html>
