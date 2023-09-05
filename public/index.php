@@ -11,12 +11,7 @@ $resultado = Loteria::consultarResultado("megasena");
 
 <!DOCTYPE html>
 <html lang="en">
-<script>
-        function click(e) {
-        
-            alert(e);
-        }
-    </script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,10 +23,21 @@ $resultado = Loteria::consultarResultado("megasena");
 <body>
 
     <header>
+        <div class="container">
+            <div class="container mb-5 mt-3">
+                <label for="search">Digite seu bilhete</label>
+                <input type="text" name="search" id="search">
+            </div>
+            <div class="container">
 
-<button id="num" class="number" type="submit" onclick="click(this.id)">botao</button>
-      
 
+
+                <?php for ($num = 1; $num <= 60; $num++) : ?>
+                    <button id=<?= "num" . $num ?> class="number" type="submit" onclick="clicar(this.id)"><?= $num ?></button>
+                <?php endfor ?>
+            </div>
+
+        </div>
 
     </header>
 
@@ -75,9 +81,25 @@ $resultado = Loteria::consultarResultado("megasena");
     </main>
 
     <footer></footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-    
+    <script>
+        let status = false
+        function clicar(e) {
+            status = !status
+            let button = document.getElementById(e)
+            if(status){
+              
+            button.style.backgroundColor = "green"
+            button.style.color = "#fff" 
+            }else{
+            button.style.backgroundColor = "gray"
+            button.style.color = "#000" 
+            }
+            
+        }
+    </script>
 
 </body>
 
