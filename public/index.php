@@ -15,7 +15,8 @@ $resultado = Loteria::consultarResultado("megasena");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css">
     <title>Mega-Sena</title>
 </head>
@@ -29,7 +30,7 @@ $resultado = Loteria::consultarResultado("megasena");
             </div>
             <div class="container">
                 <?php for ($num = 1; $num <= 60; $num++) : ?>
-                    <input id=<?= "num" . $num ?> class="number" type="submit" value=<?= $num ?> onclick="clicar(this.id)">
+                <input id=<?= "num" . $num ?> class="number" type="submit" value=<?= $num ?> onclick="clicar(this.id)">
                 <?php endfor ?>
             </div>
         </div>
@@ -54,12 +55,12 @@ $resultado = Loteria::consultarResultado("megasena");
                             $resultados = (array) todosResultados();
                             krsort($resultados);
                             foreach ($resultados as $value) : ?>
-                                <tr id=<?= "linha" . $value[0] ?>>
-                                    <td><?= $value[0] ?></td>
-                                    <?php foreach (array_slice($value, 1) as $num) : ?>
-                                        <td><?= $num ?></td>
-                                    <?php endforeach ?>
-                                </tr>
+                            <tr id=<?= "linha" . $value[0] ?>>
+                                <td><?= $value[0] ?></td>
+                                <?php foreach (array_slice($value, 1) as $num) : ?>
+                                <td><?= $num ?></td>
+                                <?php endforeach ?>
+                            </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>
@@ -70,8 +71,11 @@ $resultado = Loteria::consultarResultado("megasena");
 
     <footer></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
     <script src="./js/scripts.js"></script>
 
 </body>
+
 </html>
