@@ -23,7 +23,7 @@ class Loteria
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
-        $resposta = curl_exec($curl) ? json_decode(curl_exec($curl),true):[];
+        $resposta = curl_exec($curl) ? json_decode(curl_exec($curl), true) : [];
         // $resposta = curl_error($curl);
         // $resposta = file_get_contents('https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx');
 

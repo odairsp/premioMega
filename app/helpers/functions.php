@@ -1,7 +1,7 @@
 <?php
 
 use App\Caixa\Loteria;
-
+use PhpParser\Node\Stmt\TryCatch;
 
 function lerArquivo($arquivo)
 {
@@ -28,11 +28,13 @@ function todosResultados()
     $ultimo =  Loteria::consultarResultado('megasena')['numero'];
     $resultados = lerArquivo($path);
     $num = (int) end($resultados)[0];
-
+    $cont = 0;
     if (($ultimo > $num)) {
 
         while ($ultimo > $num) {
+            $cont++;
             $num += 1;
+
             $ultimoRes =  Loteria::consultarResultado('megasena/' . $num);
             $numerosSorteados = $ultimoRes['dezenasSorteadasOrdemSorteio'];
             foreach ($numerosSorteados as $key => $value) {
@@ -48,5 +50,6 @@ function todosResultados()
 
         $resultados = array_filter(lerArquivo($path));
     }
+
     return lerArquivo($path);;
 }

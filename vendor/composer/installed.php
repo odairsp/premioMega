@@ -3,7 +3,7 @@
         'name' => 'user/premio-mega',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0830e799199554d284d63bd0da165922ab61e717',
+        'reference' => 'e62725ba199c1aaea02c8d9e4f0fbfbf609fb23e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'user/premio-mega' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0830e799199554d284d63bd0da165922ab61e717',
+            'reference' => 'e62725ba199c1aaea02c8d9e4f0fbfbf609fb23e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

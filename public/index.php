@@ -23,12 +23,12 @@ $resultado = Loteria::consultarResultado("megasena");
 
 <body>
     <header>
-        <div class="container">
-            <div class="container mb-5 mt-3">
+        <div class="">
+            <!-- <div class=" mb-5 mt-3">
                 <label for="search">Digite seu bilhete</label>
                 <input type="text" name="search" id="search">
-            </div>
-            <div class="container">
+            </div> -->
+            <div class="">
                 <?php for ($num = 1; $num <= 60; $num++) : ?>
                 <input id=<?= "num" . $num ?> class="number" type="submit" value=<?= $num ?> onclick="clicar(this.id)">
                 <?php endfor ?>

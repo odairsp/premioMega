@@ -6,7 +6,7 @@ let numeros = [];
             let matches = document.querySelectorAll("td");
             let button = document.getElementById(e);
 
-            if ((numeros.length < 6) && (!numeros.includes(button.value))) {
+            if ((numeros.length < 60) && (!numeros.includes(button.value))) {
                 numeros.push(button.value)
                 numeros.sort((a, b) => a - b);
                 console.log(numeros);

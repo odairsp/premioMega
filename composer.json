@@ -2,13 +2,13 @@
     "name": "user/premio-mega",
     "description": "'estatisticas da mega'",
     "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        },
         "files": [
             "app/helpers/constants.php",
             "app/helpers/functions.php"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        }
+        ]
     },
     "authors": [
         {
