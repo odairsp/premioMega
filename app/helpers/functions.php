@@ -36,15 +36,19 @@ function todosResultados()
             $num += 1;
 
             $ultimoRes =  Loteria::consultarResultado('megasena/' . $num);
-            $numerosSorteados = $ultimoRes['dezenasSorteadasOrdemSorteio'];
-            foreach ($numerosSorteados as $key => $value) {
-                $numerosSorteados[$key] = (int) $value;
+            if (array_key_exists('dezenasSorteadasOrdemSorteio', $ultimoRes)) {
+                $numerosSorteados = $ultimoRes['dezenasSorteadasOrdemSorteio'];
+                if ($numerosSorteados) {
+                    foreach ($numerosSorteados as $key => $value) {
+                        $numerosSorteados[$key] = (int) $value;
+                    }
+                    //sort($numerosSorteados);
+
+                    $texto = implode(';', array_merge([$ultimoRes['numero']], $numerosSorteados));
+
+                    escreverFinal($texto, '../' . RESULTADOS_PATH);
+                }
             }
-            sort($numerosSorteados);
-
-            $texto = implode(';', array_merge([$ultimoRes['numero']], $numerosSorteados));
-
-            escreverFinal($texto, '../' . RESULTADOS_PATH);
         }
     } else {
 

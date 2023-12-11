@@ -5,7 +5,7 @@ require '../vendor/autoload.php';
 //DEPENDENCIAS DO PROJETO
 use \App\Caixa\Loteria;
 
-$resultado = Loteria::consultarResultado("megasena");
+//$resultado = Loteria::consultarResultado("megasena");
 
 ?>
 
@@ -57,7 +57,10 @@ $resultado = Loteria::consultarResultado("megasena");
                             foreach ($resultados as $value) : ?>
                             <tr id=<?= "linha" . $value[0] ?>>
                                 <td><?= $value[0] ?></td>
-                                <?php foreach (array_slice($value, 1) as $num) : ?>
+                                <?php
+                                    $array  = array_slice($value, 1);
+                                    sort($array);
+                                    foreach ((array) $array as $num) : ?>
                                 <td><?= $num ?></td>
                                 <?php endforeach ?>
                             </tr>
